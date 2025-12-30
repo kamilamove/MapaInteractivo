@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Prueba</title>
+</head>
+
+<body>
+<img src="20251224_Mapa_Guajira_carta_b_Página_1.jpg" 
+     alt="" 
+     width="100%" 
+     usemap="#Map">
+
+<img id="murcielago"
+       src="murcielago.png"
+       style="position:absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -150%);
+              width:150px;
+              display:none;">
+
+	<p id="tooltip"
+   style="position:absolute;
+          top:40%;
+          left:50%;
+          transform:translate(-50%,-50%);
+          background:rgba(0,0,0,0.7);
+          color:white;
+          padding:10px 15px;
+          border-radius:10px;
+          font-family:sans-serif;
+          display:none;">
+  Haz click y escucha los murciélagos.
+</p>
+	
+<audio id="condor" src="condor.mp3"></audio>
+
+<map name="Map">
+
+ 
+	<area shape="poly" coords="568,642,529,634,502,622,471,621,420,639,362,653,325,685,311,725,346,742,382,738,422,727,466,738,526,727,557,754,581,778,606,794,647,829,713,829,762,814,848,732,923,650,995,590,1085,477,1074,449,1057,429,1046,386,1032,358,987,285,955,250,918,239,881,218,858,210,833,206,690,210,675,215,704,263,703,323,712,370,725,434,722,506,709,569,692,607,670,625" 
+		href="javascript:void(0);"
+        onclick="playAudio('condor')"
+		onmouseover="showBat()"
+		  onMouseOut="hideBat()">
+</map>
+
+<script>
+function playAudio(id) {
+  const audio = document.getElementById(id);
+
+  // Reinicia y reproduce
+  audio.currentTime = 0;
+  audio.play().catch(err => console.log(err));
+}
+	
+	function showBat() {
+  const bat = document.getElementById("murcielago");
+  bat.style.display = "block";
+  document.getElementById("tooltip").style.display = "block";
+}
+
+	function hideBat() {
+  const bat = document.getElementById("murcielago");
+  bat.style.display = "none";
+  document.getElementById("tooltip").style.display = "none";
+}
+</script>
+</body>
+</html>
